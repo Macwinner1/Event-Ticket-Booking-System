@@ -1,0 +1,112 @@
+{
+  "info": {
+    "name": "Event Ticket Booking System",
+    "description": "API collection for testing the Event Ticket Booking System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Initialize Event",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"eventName\": \"Rock Concert 2024\",\n  \"eventDate\": \"2024-12-31T20:00:00Z\",\n  \"totalTickets\": 100,\n  \"eventDescription\": \"Amazing rock concert\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/initialize",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["initialize"]
+        }
+      }
+    },
+    {
+      "name": "Get Event Status",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/status/:eventId",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["status", ":eventId"],
+          "variable": [
+            {
+              "key": "eventId",
+              "value": "your-event-id-here"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Book Ticket",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"eventId\": \"your-event-id-here\",\n  \"userId\": \"user123\",\n  \"userName\": \"John Doe\",\n  \"userEmail\": \"john@example.com\",\n  \"ticketQuantity\": 1\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/book",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["book"]
+        }
+      }
+    },
+    {
+      "name": "Cancel Booking",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"bookingId\": \"your-booking-id-here\",\n  \"userId\": \"user123\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/cancel",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["cancel"]
+        }
+      }
+    },
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/health",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["health"]
+        }
+      }
+    }
+  ]
+}
